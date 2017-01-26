@@ -1,0 +1,17 @@
+<div *ngIf="form != null">
+    <form>
+        <div class="form-group" *ngFor="let item of form.fields">
+            <label>{{ item["fieldLabel"] }}</label>
+            <input type="text" class="form-control" [(ngModel)]="item['fieldValue']"/>
+        </div>
+        <button (click)="save();">Save</button>
+        <button (click)="isShown=!isShown">Show/Hide</button>
+    </form>
+    <div class="wrapper" [hidden]="!isShown">
+        <ul>
+            <li *ngFor="let item of form.fields">{{ item["fieldValue"] }}</li>
+        </ul>
+        <!-- localstorage -->
+        <localstorage-component></localstorage-component>
+    </div>
+</div>
